@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const HomeScreen = () => (
+const DeliveryScreen = () => (
   <View style={styles.container}>
-    <Text style={styles.text}>Benvenuto nella Home!</Text>
+    <Text style={styles.text}>Delivery</Text>
   </View>
 );
 
@@ -12,4 +12,4 @@ const styles = StyleSheet.create({
   text: { fontSize: 24 }
 });
 
-export default HomeScreen;
+export default DeliveryScreen;

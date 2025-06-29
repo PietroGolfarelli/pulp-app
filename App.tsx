@@ -1,11 +1,21 @@
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SplashScreen from './src/screens/SplashScreen';
 import { ThemeProvider } from './src/config/ThemeContext';
-import HomeScreen from './src/screens/HomeScreen';
+import MainTabs from './src/components/MainTabs';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <ThemeProvider>
-      <HomeScreen />
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Splash" component={SplashScreen} />
+          <Stack.Screen name="MainTabs" component={MainTabs} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </ThemeProvider>
   );
 }

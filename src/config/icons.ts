@@ -3,4 +3,10 @@ export const icons = {
         name: 'aperture',
         lib: 'Feather',
     },
-};
+    Home: { name: 'aperture', lib: 'Feather' },
+    Deals: { name: 'tag', lib: 'Feather' },
+    Delivery: { name: 'truck', lib: 'Feather' },
+    Profilo: { name: 'user', lib: 'Feather' },
+} as const;
+
+export type IconKey = keyof typeof icons;
