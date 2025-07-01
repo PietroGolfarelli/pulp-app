@@ -5,6 +5,7 @@ export const lightTheme = {
         secondary: '#FFA177',      // albicocca chiaro
         textPrimary: '#2D2D2D',    // grigio scuro
         textSecondary: '#555555',  // grigio medio
+        card: '#f8f9fa',
     },
     spacing: {
         xs: 4,     // extra small
@@ -20,6 +21,11 @@ export const lightTheme = {
         button: 16,    // testo nei pulsanti
     },
     borderRadius: 12,  // angoli arrotondati
+    fonts: {
+        regular: 'System',
+        bold: 'System-Bold',
+        italic: 'System-Italic',
+    },
 };
 
 export const darkTheme = {
@@ -29,8 +35,14 @@ export const darkTheme = {
         secondary: '#FFA177',      // albicocca chiaro (stesso del light)
         textPrimary: '#FFFFFF',    // bianco puro
         textSecondary: '#AAAAAA',  // grigio chiaro
+        card: '#343a40',
     },
     spacing: lightTheme.spacing,
     fontSizes: lightTheme.fontSizes,
     borderRadius: lightTheme.borderRadius,
+    fonts: {
+        regular: 'System',
+        bold: 'System-Bold',
+        italic: 'System-Italic',
+    },
 };

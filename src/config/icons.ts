@@ -5,6 +5,7 @@ export const icons = {
     },
     Home: { name: 'aperture', lib: 'Feather' },
     Deals: { name: 'tag', lib: 'Feather' },
+    Order: { name: 'shopping-bag', lib: 'Feather' },
     Delivery: { name: 'truck', lib: 'Feather' },
     Profilo: { name: 'user', lib: 'Feather' },
 } as const;

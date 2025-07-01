@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import DealScreen from '../screens/DealScreen';
 import DeliveryScreen from '../screens/DeliveryScreen';
 import ProfiloScreen from '../screens/ProfileScreen';
+import OrderScreen from '../screens/OrderScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,14 +18,14 @@ type TabBarIconProps = {
 
 function TabBarIcon({ routeName, color, size }: Readonly<TabBarIconProps>) {
     const icon = icons[routeName];
-
-    // Scegli la libreria giusta in base a icon.lib
+    if (!icon) {
+        // Puoi anche loggare per debug
+        console.warn(`Icon not found for route: ${routeName}`);
+        return null;
+    }
     switch (icon.lib) {
         case 'Feather':
             return <Feather name={icon.name} size={size} color={color} />;
-        // case 'MaterialIcons':
-        //   return <MaterialIcons name={icon.name} size={size} color={color} />;
-        // Aggiungi altri casi se usi più librerie
         default:
             return null;
     }
@@ -46,6 +47,7 @@ function MainTabs() {
         >
             <Tab.Screen name="Home" component={HomeScreen} />
             <Tab.Screen name="Deals" component={DealScreen} />
+            <Tab.Screen name="Order" component={OrderScreen} />
             <Tab.Screen name="Delivery" component={DeliveryScreen} />
             <Tab.Screen name="Profilo" component={ProfiloScreen} />
         </Tab.Navigator>
