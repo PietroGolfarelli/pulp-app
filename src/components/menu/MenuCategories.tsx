@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, FlatList, View, Text } from 'react-native';
-import { MENU_CATEGORIES, MenuCategoryType } from '../../config/menu';
+import { MENU, MenuCategoryType } from '../../config/menu';
 import CategoryCard from './CategoryCard';
 import {
     CARD_HEIGHT,
@@ -14,15 +14,16 @@ import {
     TITLE_MARGIN_TOP,
 } from '../../config/layout';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { MenuStackParamList } from '../../navigation/types';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-type Props = {
-    onCategoryPress: (category: MenuCategoryType) => void;
-};
-
-const MenuCategories = ({ onCategoryPress }: Props) => {
+const MenuCategories = () => {
     const insets = useSafeAreaInsets();
+    type NavigationProp = NativeStackNavigationProp<MenuStackParamList, 'Categories'>;
+    const navigation = useNavigation<NavigationProp>();
 
-    const numRows = Math.ceil(MENU_CATEGORIES.length / NUM_COLUMNS);
+    const numRows = Math.ceil(MENU.length / NUM_COLUMNS);
 
     // Altezza totale delle card (includendo margini tra le righe)
     const totalCardsHeight =
@@ -39,6 +40,10 @@ const MenuCategories = ({ onCategoryPress }: Props) => {
 
     // Scroll solo se serve
     const shouldScroll = totalHeight > SCREEN_HEIGHT;
+
+    const handleCategoryPress = (category: MenuCategoryType) => {
+        navigation.navigate('Category', { category });
+    };
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -58,13 +63,13 @@ const MenuCategories = ({ onCategoryPress }: Props) => {
             </View>
 
             <FlatList
-                data={MENU_CATEGORIES}
+                data={MENU}
                 keyExtractor={item => item.id}
-                numColumns={2}
+                numColumns={NUM_COLUMNS}
                 renderItem={({ item, index }) => (
                     <CategoryCard
                         category={item}
-                        onPress={onCategoryPress}
+                        onPress={() => handleCategoryPress(item)}
                         style={{
                             marginLeft: index % NUM_COLUMNS === 0 ? CARD_MARGIN : CARD_MARGIN / 2,
                             marginRight: index % NUM_COLUMNS === NUM_COLUMNS - 1 ? CARD_MARGIN : CARD_MARGIN / 2,

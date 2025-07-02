@@ -6,7 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import DealScreen from '../screens/DealScreen';
 import DeliveryScreen from '../screens/DeliveryScreen';
 import ProfiloScreen from '../screens/ProfileScreen';
-import OrderScreen from '../screens/OrderScreen';
+import MenuStack from '../navigation/MenuStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -47,7 +47,7 @@ function MainTabs() {
         >
             <Tab.Screen name="Home" component={HomeScreen} />
             <Tab.Screen name="Deals" component={DealScreen} />
-            <Tab.Screen name="Order" component={OrderScreen} />
+            <Tab.Screen name="Order" component={MenuStack} />
             <Tab.Screen name="Delivery" component={DeliveryScreen} />
             <Tab.Screen name="Profilo" component={ProfiloScreen} />
         </Tab.Navigator>

@@ -13,6 +13,12 @@ export const SPACING = {
     xl: 32,
 };
 
+// Header
+export const HEADER_HEIGHT = 44;
+export const HEADER_ICON_SIZE = 22;
+export const HEADER_PADDING_HORIZONTAL = 16;
+export const HEADER_TITLE_FONT_SIZE = 20;
+
 // Card categorie menù
 export const NUM_COLUMNS = 2;
 export const CARD_MARGIN = SPACING.s;
