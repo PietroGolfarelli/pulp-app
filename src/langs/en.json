@@ -1,0 +1,36 @@
+
+{
+    "home": {
+        "welcome": "Welcome to the home!"
+    },
+    "tabs": {
+        "home": "Home",
+        "deals": "Deals",
+        "order": "Menu",
+        "delivery": "Delivery",
+        "profile": "Profile"
+    },
+    "menu": {
+        "title": "Menu",
+        "categories": "Categories",
+        "addToCart": "Add",
+        "price": "Price",
+        "ingredients": "Ingredients",
+        "allergens": "Allergens",
+        "noIngredients": "No ingredients available",
+        "noAllergens": "No allergens",
+        "cart": "Cart",
+        "back": "Back",
+        "info": "Product info"
+    },
+    "cart": {
+        "title": "Your cart",
+        "empty": "The cart is empty",
+        "checkout": "Checkout"
+    },
+    "product": {
+        "add": "Add",
+        "added": "Added",
+        "description": "Description"
+    }
+}

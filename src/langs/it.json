@@ -1,0 +1,35 @@
+{
+    "home": {
+        "welcome": "Benvenuto nella home!"
+    },
+    "tabs": {
+        "home": "Home",
+        "deals": "Offerte",
+        "order": "Menu",
+        "delivery": "Consegna",
+        "profile": "Profilo"
+    },
+    "menu": {
+        "title": "Menu",
+        "categories": "Categorie",
+        "addToCart": "Aggiungi",
+        "price": "Prezzo",
+        "ingredients": "Ingredienti",
+        "allergens": "Allergeni",
+        "noIngredients": "Nessun ingrediente disponibile",
+        "noAllergens": "Nessun allergene",
+        "cart": "Carrello",
+        "back": "Indietro",
+        "info": "Info prodotto"
+    },
+    "cart": {
+        "title": "Il tuo carrello",
+        "empty": "Il carrello è vuoto",
+        "checkout": "Procedi all’ordine"
+    },
+    "product": {
+        "add": "Aggiungi",
+        "added": "Aggiunto",
+        "description": "Descrizione"
+    }
+}

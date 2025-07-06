@@ -7,6 +7,7 @@ import DealScreen from '../screens/DealScreen';
 import DeliveryScreen from '../screens/DeliveryScreen';
 import ProfiloScreen from '../screens/ProfileScreen';
 import MenuStack from '../navigation/MenuStack';
+import { useLabels } from '../config/LanguangeProvider';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +20,6 @@ type TabBarIconProps = {
 function TabBarIcon({ routeName, color, size }: Readonly<TabBarIconProps>) {
     const icon = icons[routeName];
     if (!icon) {
-        // Puoi anche loggare per debug
         console.warn(`Icon not found for route: ${routeName}`);
         return null;
     }
@@ -32,6 +32,8 @@ function TabBarIcon({ routeName, color, size }: Readonly<TabBarIconProps>) {
 }
 
 function MainTabs() {
+    const labels = useLabels();
+
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
@@ -45,11 +47,31 @@ function MainTabs() {
                 ),
             })}
         >
-            <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Deals" component={DealScreen} />
-            <Tab.Screen name="Order" component={MenuStack} />
-            <Tab.Screen name="Delivery" component={DeliveryScreen} />
-            <Tab.Screen name="Profilo" component={ProfiloScreen} />
+            <Tab.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{ tabBarLabel: labels.tabs.home }}
+            />
+            <Tab.Screen
+                name="Deals"
+                component={DealScreen}
+                options={{ tabBarLabel: labels.tabs.deals }}
+            />
+            <Tab.Screen
+                name="Order"
+                component={MenuStack}
+                options={{ tabBarLabel: labels.tabs.order }}
+            />
+            <Tab.Screen
+                name="Delivery"
+                component={DeliveryScreen}
+                options={{ tabBarLabel: labels.tabs.delivery }}
+            />
+            <Tab.Screen
+                name="Profilo"
+                component={ProfiloScreen}
+                options={{ tabBarLabel: labels.tabs.profile }}
+            />
         </Tab.Navigator>
     );
 }

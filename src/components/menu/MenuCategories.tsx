@@ -14,7 +14,7 @@ import {
     TITLE_MARGIN_TOP,
 } from '../../config/layout';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { MenuStackParamList } from '../../navigation/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 

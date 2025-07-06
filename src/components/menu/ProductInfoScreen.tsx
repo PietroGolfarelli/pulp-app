@@ -6,6 +6,7 @@ import MenuHeader from '../common/MenuHeader';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { MenuStackParamList } from '../../navigation/types';
 import { CONTENT_MAX_WIDTH, CONTENT_PADDING_HORIZONTAL, HEADER_HEIGHT, IMAGE_SIZE, SCREEN_WIDTH, TRIANGLE_HEIGHT } from '../../config/layout';
+import { useLabels } from '../../config/LanguangeProvider';
 
 type Props = NativeStackScreenProps<MenuStackParamList, 'ProductInfo'>;
 
@@ -14,6 +15,7 @@ const ProductInfoScreen = () => {
     const route = useRoute<Props['route']>();
     const { product } = route.params;
     const { theme } = useTheme();
+    const labels = useLabels();
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -65,12 +67,13 @@ const ProductInfoScreen = () => {
                         backgroundColor: theme.colors.productBg,
                         position: 'absolute',
                         left: (SCREEN_WIDTH - IMAGE_SIZE) / 2,
-                        top: HEADER_HEIGHT / 2 + 20, // Sposta l'immagine sotto l'header
+                        top: HEADER_HEIGHT / 2 + 20,
                         zIndex: 2,
                     }}
                     resizeMode="cover"
                 />
             </View>
+
             {/* Testo */}
             <View style={{
                 width: '100%',
@@ -97,7 +100,7 @@ const ProductInfoScreen = () => {
                     marginBottom: 4,
                     textAlign: 'left',
                 }}>
-                    Ingredienti
+                    {labels.menu.ingredients}
                 </Text>
                 <Text style={{
                     fontSize: 15,
@@ -107,7 +110,7 @@ const ProductInfoScreen = () => {
                 }}>
                     {Array.isArray(product.ingredients) && product.ingredients.length > 0
                         ? product.ingredients.join(', ')
-                        : 'Nessun ingrediente disponibile'}
+                        : labels.menu.noIngredients}
                 </Text>
                 {/*ALLERGENI*/}
                 <Text style={{
@@ -117,7 +120,7 @@ const ProductInfoScreen = () => {
                     marginBottom: 4,
                     textAlign: 'left',
                 }}>
-                    Allergeni
+                    {labels.menu.allergens}
                 </Text>
                 <Text style={{
                     fontSize: 15,
@@ -127,9 +130,10 @@ const ProductInfoScreen = () => {
                 }}>
                     {Array.isArray(product.allergens) && product.allergens.length > 0
                         ? product.allergens.join(', ')
-                        : 'Nessun allergene'}
+                        : labels.menu.noAllergens}
                 </Text>
             </View>
+
             {/* PREZZO E AGGIUNGI FISSI IN BASSO */}
             <SafeAreaView style={{
                 width: '100%',
@@ -169,7 +173,7 @@ const ProductInfoScreen = () => {
                             fontSize: 18,
                             fontWeight: 'bold',
                         }}>
-                            Aggiungi
+                            {labels.menu.addToCart}
                         </Text>
                     </TouchableOpacity>
                 </View>
