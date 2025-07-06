@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 type Props = {
     item: MenuItemType;
-    onInfo: (item: MenuItemType) => void;
+    onInfo: () => void;
     onAdd: (item: MenuItemType) => void;
     style?: ViewStyle;
 };
@@ -24,7 +24,7 @@ const ProductCard = ({ item, onInfo, onAdd, style }: Props) => (
                 shadowRadius: 6,
                 elevation: 1,
             },
-            style, // <--- aggiungi qui!
+            style,
         ]}
     >
         <Image
@@ -35,7 +35,7 @@ const ProductCard = ({ item, onInfo, onAdd, style }: Props) => (
         <Text style={{ color: '#666', fontSize: 13, textAlign: 'center' }}>{item.description}</Text>
         <Text style={{ color: '#007bff', fontWeight: 'bold', marginTop: 4 }}>{item.price} €</Text>
         <View style={{ flexDirection: 'row', marginTop: 8 }}>
-            <TouchableOpacity onPress={() => onInfo(item)} style={{ marginRight: 12 }}>
+            <TouchableOpacity onPress={onInfo}>
                 <Ionicons name="information-circle-outline" size={24} color="#007bff" />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => onAdd(item)}>

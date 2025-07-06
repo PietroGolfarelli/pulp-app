@@ -38,6 +38,12 @@ export const TITLE_FONT_SIZE = 28;
 export const TITLE_MARGIN_TOP = Platform.OS === 'ios' ? 12 : StatusBar.currentHeight ?? 12;
 export const TITLE_MARGIN_BOTTOM = 0;
 
+// Info prodotto
+export const IMAGE_SIZE = 260;
+export const TRIANGLE_HEIGHT = HEADER_HEIGHT + IMAGE_SIZE + 40; // Triangolo che copre header + immagine
+export const CONTENT_MAX_WIDTH = 420;
+export const CONTENT_PADDING_HORIZONTAL = 24;
+
 // Altre costanti riutilizzabili
 export const BORDER_RADIUS = 12;
 export const SHADOW = {

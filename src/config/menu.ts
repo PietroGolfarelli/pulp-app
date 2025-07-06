@@ -4,6 +4,8 @@ export interface MenuItemType {
     description: string;
     price: number;
     image: any; // Puoi specificare meglio se usi immagini remote o locali
+    ingredients: string[];
+    allergens: string[];
 }
 
 export interface MenuCategoryType {
@@ -15,13 +17,15 @@ export interface MenuCategoryType {
 }
 
 // Mock di prodotti generici
-const mockItems = [
+const mockItems: MenuItemType[] = [
     {
         id: 'item1',
         label: 'Prodotto 1',
         description: 'Descrizione prodotto 1',
         price: 5.0,
         image: require('../assets/pizza.png'),
+        ingredients: ['Ingrediente A', 'Ingrediente B'],
+        allergens: ['Glutine'],
     },
     {
         id: 'item2',
@@ -29,6 +33,8 @@ const mockItems = [
         description: 'Descrizione prodotto 2',
         price: 6.0,
         image: require('../assets/pizza.png'),
+        ingredients: ['Ingrediente X', 'Ingrediente Y'],
+        allergens: [],
     },
 ];
 
@@ -46,6 +52,8 @@ export const MENU: MenuCategoryType[] = [
                 description: 'Tigella con prosciutto e formaggio',
                 price: 3.5,
                 image: require('../assets/pizza.png'),
+                ingredients: ['Prosciutto', 'Formaggio', 'Tigella'],
+                allergens: ['Glutine', 'Latte'],
             },
             {
                 id: 'tigella-vegetariana',
@@ -53,6 +61,8 @@ export const MENU: MenuCategoryType[] = [
                 description: 'Tigella con verdure grigliate',
                 price: 4.0,
                 image: require('../assets/pizza.png'),
+                ingredients: ['Verdure grigliate', 'Tigella'],
+                allergens: ['Glutine'],
             },
         ],
     },
@@ -75,6 +85,8 @@ export const MENU: MenuCategoryType[] = [
                 description: 'Spaghetti con salsa di pomodoro fresco',
                 price: 7.0,
                 image: require('../assets/pizza.png'),
+                ingredients: ['Spaghetti', 'Pomodoro', 'Basilico', 'Olio EVO'],
+                allergens: ['Glutine'],
             },
             {
                 id: 'penne',
@@ -82,6 +94,8 @@ export const MENU: MenuCategoryType[] = [
                 description: 'Penne con salsa piccante',
                 price: 7.5,
                 image: require('../assets/pizza.png'),
+                ingredients: ['Penne', 'Ragù', 'Peperoncino'],
+                allergens: ['Glutine', 'Sedano'],
             },
         ],
     },
@@ -90,7 +104,18 @@ export const MENU: MenuCategoryType[] = [
         label: 'Piatti e Insalate',
         image: require('../assets/pizza.png'),
         color: '#1B6B4B',
-        items: mockItems,
+        items: [
+            {
+                id: 'insalata-mista',
+                label: 'Insalata Mista',
+                description: 'Insalata con verdure fresche',
+                price: 5.0,
+                image: require('../assets/pizza.png'),
+                ingredients: ['Lattuga', 'Pomodoro', 'Carote', 'Mais'],
+                allergens: [],
+            },
+            ...mockItems,
+        ],
     },
     {
         id: 'dolci-frutta',
@@ -104,6 +129,8 @@ export const MENU: MenuCategoryType[] = [
                 description: 'Dolce al cucchiaio con caffè e mascarpone',
                 price: 4.5,
                 image: require('../assets/pizza.png'),
+                ingredients: ['Mascarpone', 'Caffè', 'Savoiardi', 'Cacao'],
+                allergens: ['Uova', 'Latte', 'Glutine'],
             },
             {
                 id: 'macedonia',
@@ -111,6 +138,8 @@ export const MENU: MenuCategoryType[] = [
                 description: 'Frutta fresca di stagione',
                 price: 3.0,
                 image: require('../assets/pizza.png'),
+                ingredients: ['Frutta fresca di stagione'],
+                allergens: [],
             },
         ],
     },
@@ -126,6 +155,8 @@ export const MENU: MenuCategoryType[] = [
                 description: 'Bottiglia 0.5L',
                 price: 1.0,
                 image: require('../assets/pizza.png'),
+                ingredients: [],
+                allergens: [],
             },
             {
                 id: 'coca',
@@ -133,6 +164,8 @@ export const MENU: MenuCategoryType[] = [
                 description: 'Lattina 0.33L',
                 price: 2.0,
                 image: require('../assets/pizza.png'),
+                ingredients: [],
+                allergens: [],
             },
         ],
     },

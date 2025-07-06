@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, FlatList } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRoute, useNavigation } from '@react-navigation/native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack';
 import ProductCard from './ProductCard';
 import MenuHeader from '../common/MenuHeader';
 import {
@@ -17,10 +17,11 @@ import {
 import { MenuStackParamList } from '../../navigation/types';
 
 type Props = NativeStackScreenProps<MenuStackParamList, 'Category'>;
+type NavigationProp = NativeStackNavigationProp<MenuStackParamList, 'Category'>;
 
 const MenuCategory = () => {
     const insets = useSafeAreaInsets();
-    const navigation = useNavigation();
+    const navigation = useNavigation<NavigationProp>();
     const route = useRoute<Props['route']>();
     const { category } = route.params;
 
@@ -53,8 +54,8 @@ const MenuCategory = () => {
                 renderItem={({ item, index }) => (
                     <ProductCard
                         item={item}
-                        onInfo={() => {/* logica info */}}
-                        onAdd={() => {/* logica add */}}
+                        onInfo={() => navigation.navigate('ProductInfo', { product: item })}
+                        onAdd={() => {/* logica add */ }}
                         style={{
                             marginLeft: index % NUM_COLUMNS === 0 ? CARD_MARGIN : CARD_MARGIN / 2,
                             marginRight: index % NUM_COLUMNS === NUM_COLUMNS - 1 ? CARD_MARGIN : CARD_MARGIN / 2,
