@@ -7,8 +7,14 @@ import MainTabs from './src/components/MainTabs';
 import { LanguageProvider } from './src/config/LanguangeProvider';
 
 const Stack = createNativeStackNavigator();
+import { useFonts, Oswald_700Bold } from '@expo-google-fonts/oswald';
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Oswald_700Bold,
+  });
+
+  if (!fontsLoaded) return null;
   return (
     <LanguageProvider>
       <ThemeProvider>

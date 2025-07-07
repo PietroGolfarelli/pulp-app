@@ -17,8 +17,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { MenuStackParamList } from '../../navigation/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useTheme } from '../../config/ThemeContext';
 
 const MenuCategories = () => {
+    const { theme } = useTheme();
     const insets = useSafeAreaInsets();
     type NavigationProp = NativeStackNavigationProp<MenuStackParamList, 'Categories'>;
     const navigation = useNavigation<NavigationProp>();
@@ -55,7 +57,7 @@ const MenuCategories = () => {
                         textAlign: 'left',
                         marginTop: TITLE_MARGIN_TOP,
                         marginBottom: TITLE_MARGIN_BOTTOM,
-                        color: '#222',
+                        color: theme.colors.textPrimary,
                     }}
                 >
                     Ordina
