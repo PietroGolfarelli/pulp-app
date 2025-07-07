@@ -89,10 +89,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     image: {
-        width: 150,
-        height: 150,
+        width: 180,
+        height: 180,
         borderRadius: 18,
-        marginLeft: 38,
+        marginLeft: 30,
     },
     priceBox: {
         flex: 1,
@@ -106,8 +106,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         borderWidth: 5,
         alignSelf: 'flex-end',
-        marginRight: 10,
-        marginBottom: 60
+        marginRight: 8,
+        marginBottom: 80
     },
     priceInt: {
         fontSize: 44,
