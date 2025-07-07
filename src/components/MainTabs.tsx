@@ -8,6 +8,7 @@ import DeliveryScreen from '../screens/DeliveryScreen';
 import ProfiloScreen from '../screens/ProfileScreen';
 import MenuStack from '../navigation/MenuStack';
 import { useLabels } from '../config/LanguangeProvider';
+import DealsStack from './deals/DealStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -54,7 +55,7 @@ function MainTabs() {
             />
             <Tab.Screen
                 name="Deals"
-                component={DealScreen}
+                component={DealsStack}
                 options={{ tabBarLabel: labels.tabs.deals }}
             />
             <Tab.Screen

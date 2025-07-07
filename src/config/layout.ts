@@ -36,7 +36,7 @@ export const LIST_PADDING_BOTTOM = SPACING.m;
 // Titoli e testo
 export const TITLE_FONT_SIZE = 28;
 export const TITLE_MARGIN_TOP = Platform.OS === 'ios' ? 12 : StatusBar.currentHeight ?? 12;
-export const TITLE_MARGIN_BOTTOM = 0;
+export const TITLE_MARGIN_BOTTOM = 10;
 
 // Info prodotto
 export const IMAGE_SIZE = 260;

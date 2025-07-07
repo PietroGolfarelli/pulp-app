@@ -82,7 +82,6 @@ const MenuCategories = () => {
                     />
                 )}
                 contentContainerStyle={{
-                    paddingVertical: LIST_PADDING_VERTICAL,
                     paddingBottom: LIST_PADDING_BOTTOM + insets.bottom,
                 }}
                 showsVerticalScrollIndicator={false}

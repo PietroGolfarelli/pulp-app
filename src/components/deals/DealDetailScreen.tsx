@@ -1,32 +1,35 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, Platform, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, Platform, SafeAreaView, TouchableOpacity } from 'react-native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 import { DealType } from '../../config/deals';
-import { useNavigation } from '@react-navigation/native';
-import { DealsStackParamList } from '../../navigation/types';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import MenuHeader from '../common/MenuHeader';
 
-type Props = {
-    deal: DealType;
-};
+type RouteParams = { deal: DealType };
 
 const getPriceParts = (price: number) => {
     const [int, dec] = price.toFixed(2).split('.');
     return { int, dec };
 };
 
-type NavigationProp = NativeStackNavigationProp<DealsStackParamList, 'Deals'>;
-
-const DealCard = ({ deal }: Props) => {
+const DealDetailScreen = () => {
+    const route = useRoute();
+    const navigation = useNavigation();
+    const { deal } = route.params as RouteParams;
     const { int, dec } = getPriceParts(deal.discountedPrice);
-    const navigation = useNavigation<NavigationProp>();
+
+    const handleUseDeal = () => {
+        // Qui la logica per "utilizzare" l'offerta
+        alert('Offerta utilizzata!');
+    };
 
     return (
-        <TouchableOpacity
-            activeOpacity={0.85}
-            onPress={() => navigation.navigate('DealDetail', { deal })}
-        >
-            <View style={[styles.cardWrapper, styles.shadow]}>
-                {/* Top colorata */}
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+            <MenuHeader
+                title={deal.title}
+                onBack={() => navigation.goBack()}
+            />
+
+            <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
                 <View style={[styles.top, { backgroundColor: deal.color }]}>
                     <Image source={deal.image} style={styles.image} resizeMode="cover" />
                     <View style={styles.priceBox}>
@@ -54,76 +57,54 @@ const DealCard = ({ deal }: Props) => {
                         </View>
                     </View>
                 </View>
-                {/* Bottom bianca */}
-                <View style={styles.bottom}>
+
+                <View style={styles.details}>
                     <Text style={styles.title}>{deal.title}</Text>
                     <Text style={styles.desc}>{deal.description}</Text>
                 </View>
+            </ScrollView>
+
+            {/* Bottone fisso in fondo */}
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.button} onPress={handleUseDeal}>
+                    <Text style={styles.buttonText}>Utilizza</Text>
+                </TouchableOpacity>
             </View>
-        </TouchableOpacity>
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
-    cardWrapper: {
-        borderRadius: 20,
-        overflow: 'hidden',
-        backgroundColor: '#fff',
-        marginBottom: 0,
-        marginHorizontal: 2,
-        borderWidth: 1,
-        borderColor: '#ececec',
-        zIndex: 1,
-    },
-    shadow: {
-        ...Platform.select({
-            ios: {
-                shadowColor: '#000',
-                shadowOffset: { width: 0, height: 4 },
-                shadowOpacity: 0.10,
-                shadowRadius: 12,
-            },
-            android: {
-                elevation: 6,
-            },
-        }),
-    },
     top: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical: 18,
-        paddingHorizontal: 12,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0,
-        justifyContent: 'space-between',
+        paddingVertical: 38,
+        justifyContent: 'space-between'
     },
     image: {
-        width: 180,
-        height: 180,
+        width: 230,
+        height: 230,
         borderRadius: 18,
-        marginLeft: 30,
+        marginLeft: 35
     },
     priceBox: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-
     },
     discountedPriceWrapper: {
         borderRadius: 100,
-        paddingVertical: 23,
-        paddingHorizontal: 12,
+        paddingVertical: 33,
+        paddingHorizontal: 23,
         borderWidth: 5,
         alignSelf: 'flex-end',
-        marginRight: 4,
-        marginBottom: 80
+        marginRight: 10,
+        marginBottom: 120
     },
     priceInt: {
-        fontSize: 44,
+        fontSize: 50,
         fontWeight: 'bold',
-        lineHeight: 50,
+        lineHeight: 60,
     },
     priceDec: {
         fontSize: 14,
@@ -132,26 +113,43 @@ const styles = StyleSheet.create({
         marginBottom: 30,
         lineHeight: 28,
     },
-    bottom: {
-        backgroundColor: '#fff',
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
-        borderTopLeftRadius: 16,
-        borderTopRightRadius: 16,
-        paddingHorizontal: 18,
-        paddingVertical: 16
+    details: {
+        paddingHorizontal: 24,
+        paddingTop: 32,
     },
     title: {
-        fontSize: 19,
+        fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 4,
+        marginBottom: 12,
         color: '#222',
+        textAlign: 'left',
     },
     desc: {
-        fontSize: 15,
+        fontSize: 17,
         color: '#444',
         marginBottom: 0,
+        textAlign: 'left',
+    },
+    buttonContainer: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: '#fff',
+        padding: 16
+    },
+    button: {
+        backgroundColor: '#FF5A36',
+        borderRadius: 16,
+        paddingVertical: 18,
+        alignItems: 'center',
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 20,
+        fontWeight: 'bold',
+        letterSpacing: 1,
     },
 });
 
-export default DealCard;
+export default DealDetailScreen;
