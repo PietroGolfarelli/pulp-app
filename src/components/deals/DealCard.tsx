@@ -14,7 +14,7 @@ const getPriceParts = (price: number) => {
     return { int, dec };
 };
 
-type NavigationProp = NativeStackNavigationProp<DealsStackParamList, 'Deals'>;
+type NavigationProp = NativeStackNavigationProp<DealsStackParamList, 'DealList'>;
 
 const DealCard = ({ deal }: Props) => {
     const { int, dec } = getPriceParts(deal.discountedPrice);

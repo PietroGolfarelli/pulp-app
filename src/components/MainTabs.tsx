@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 import { IconKey, icons } from '../config/icons';
 import HomeScreen from '../screens/HomeScreen';
-import DealScreen from '../screens/DealScreen';
 import DeliveryScreen from '../screens/DeliveryScreen';
 import ProfiloScreen from '../screens/ProfileScreen';
 import MenuStack from '../navigation/MenuStack';

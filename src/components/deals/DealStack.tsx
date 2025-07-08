@@ -7,9 +7,9 @@ const Stack = createNativeStackNavigator();
 
 export default function DealsStack() {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="Deals" component={DealScreen} />
-            <Stack.Screen name="DealDetail" component={DealDetailScreen} options={{ headerShown: false }} />
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="DealList" component={DealScreen} />
+            <Stack.Screen name="DealDetail" component={DealDetailScreen} />
         </Stack.Navigator>
     );
 }

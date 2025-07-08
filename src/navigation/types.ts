@@ -8,6 +8,6 @@ export type MenuStackParamList = {
 };
 
 export type DealsStackParamList = {
-    Deals: undefined;
+    DealList: undefined;
     DealDetail: { deal: DealType };
 };

@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, Platform, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { DealType } from '../../config/deals';
 import MenuHeader from '../common/MenuHeader';
+import { useLabels } from '../../config/LanguangeProvider';
 
 type RouteParams = { deal: DealType };
 
@@ -11,14 +12,21 @@ const getPriceParts = (price: number) => {
     return { int, dec };
 };
 
+// Funzione per formattare la data in modo leggibile
+const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    // Esempio: 2025-07-31 → 31/07/2025
+    return date.toLocaleDateString('it-IT');
+};
+
 const DealDetailScreen = () => {
+    const labels = useLabels();
     const route = useRoute();
     const navigation = useNavigation();
     const { deal } = route.params as RouteParams;
     const { int, dec } = getPriceParts(deal.discountedPrice);
 
     const handleUseDeal = () => {
-        // Qui la logica per "utilizzare" l'offerta
         alert('Offerta utilizzata!');
     };
 
@@ -61,13 +69,15 @@ const DealDetailScreen = () => {
                 <View style={styles.details}>
                     <Text style={styles.title}>{deal.title}</Text>
                     <Text style={styles.desc}>{deal.description}</Text>
+                    <Text style={styles.validUntil}>
+                        {labels.deals.validUntil}: {formatDate(deal.validUntil)}
+                    </Text>
                 </View>
             </ScrollView>
 
-            {/* Bottone fisso in fondo */}
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button} onPress={handleUseDeal}>
-                    <Text style={styles.buttonText}>Utilizza</Text>
+                    <Text style={styles.buttonText}>{labels.deals.activateOffer}</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
@@ -127,7 +137,13 @@ const styles = StyleSheet.create({
     desc: {
         fontSize: 17,
         color: '#444',
-        marginBottom: 0,
+        marginBottom: 8,
+        textAlign: 'left',
+    },
+    validUntil: {
+        fontSize: 15,
+        color: '#888',
+        marginTop: 8,
         textAlign: 'left',
     },
     buttonContainer: {

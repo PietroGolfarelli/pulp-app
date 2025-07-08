@@ -34,6 +34,7 @@
     },
     "deals": {
         "validUntil": "Valido fino al",
-        "addToCart": "Aggiungi al carrello"
+        "addToCart": "Aggiungi al carrello",
+        "activateOffer": "Utilizza"
     }
 }
